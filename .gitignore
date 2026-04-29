@@ -1,4 +1,5 @@
 __pycache__/
+.jj/
 *.py[oc]
 build/
 dist/
