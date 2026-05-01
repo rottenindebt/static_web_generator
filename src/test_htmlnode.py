@@ -20,7 +20,7 @@ class TestHtmlNode(unittest.TestCase):
         )
         self.assertEqual(
             node.props_to_html(),
-            " href=https://www.boot.dev/ img=./img/pakitasalas.png",
+            ' href="https://www.boot.dev/" img="./img/pakitasalas.png"',
         )
 
     def test_leaf_node(self):
@@ -40,7 +40,7 @@ class TestHtmlNode(unittest.TestCase):
 
     def test_leaf_eq(self):
         leaf = LeafNode("b", "IMPORTANT", { "color": "red", "font": "iosevka" })
-        self.assertEqual(leaf.to_html(), "<b color=red font=iosevka>IMPORTANT</b>")
+        self.assertEqual(leaf.to_html(), '<b color="red" font="iosevka">IMPORTANT</b>')
 
     def test_to_html_with_children(self):
         child_node = LeafNode("span", "child")

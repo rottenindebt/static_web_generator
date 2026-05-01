@@ -7,13 +7,13 @@ class HtmlNode():
         self.props = props # a key-value pair like href and a url
 
     def to_html(self) -> str:
-        raise NotImplementedError("NOT IMPLEMENTED, YET...")
+        raise NotImplementedError("NOT IMPLEMENTED!?, YET?...")
 
     def props_to_html(self) -> str:
         form = ""
         if self.props != None:
             for pair in self.props:
-                form += f" {pair}={self.props[pair]}"
+                form += f' {pair}="{self.props[pair]}"'
         return form
 
     def __eq__(self, other):
@@ -43,14 +43,14 @@ class ParentNode(HtmlNode):
         super().__init__(tag=tag, children=children, props=props)
 
     def to_html(self) -> str:
-        if not self.tag:
-            raise ValueError("parentnode missing tag")
+        if not (self.tag and self.children):
+            raise ValueError("parentnode missing IMPORTANT values")
         value = f"<{self.tag}>"
         for node in self.children:
             if not node.tag:
                 raise ValueError(f"missing TAG in {node}")
             if not (node.value or node.children):
-                raise ValueError(f"missing VALUE of CHILD in {node}")
+                raise ValueError(f"missing VALUE or CHILD in {node}")
             value += node.to_html()
         return value + f"</{self.tag}>"
 
