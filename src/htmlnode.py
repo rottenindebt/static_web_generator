@@ -32,7 +32,7 @@ class LeafNode(HtmlNode):
         super().__init__(tag=tag, value=value, props=props)
 
     def to_html(self) -> str:
-        return f"<{self.tag}{self.props_to_html()}>{self.value}</{self.tag}>"
+        return f"<{self.tag}{self.props_to_html()}>" + f"{self.value}</{self.tag}>" if not (self.tag == "img") else ""
         
     def __repr__(self) -> str:
         return f"HtmlNode({self.tag}, {self.value}, {self.props})"
